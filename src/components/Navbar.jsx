@@ -9,9 +9,12 @@ const Navbar = () => {
     setInput(e.target.value);
   };
 
-  const handleFormSubmit = () => {
-    navigate(`/pokemon/search/${input.toLowerCase()}`);
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const targetUrl = input ? `/pokemon/search/${encodeURIComponent(input.toLowerCase())}` : '/pokemon/search';
+    navigate(targetUrl);
   };
+
   return (
 		<div className="flex items-center justify-center mt-[40px]">
 			<nav className='flex flex-col items-center gap-[20px]'>
